@@ -17,7 +17,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   updates: {
     fallbackToCacheTimeout: 0,
   },
-  assetBundlePatterns: ["**/*"],
+  assetBundlePatterns: ["**/*", "./assets/fonts"],
   ios: {
     bundleIdentifier: "your.bundle.identifier",
     supportsTablet: true,

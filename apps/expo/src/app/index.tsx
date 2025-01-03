@@ -1,18 +1,11 @@
 import React from "react";
-import {
-  Button,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
 
 import ConnectButton from "~/components/ConnectButton";
-import { api } from "~/utils/api";
 import Logo from "../components/Logo";
+import MainText from "../components/MainText";
 
 export default function Index() {
   return (
@@ -25,11 +18,20 @@ export default function Index() {
           },
         }}
       />
-      <Logo />
+      <View className="mb-40 mt-8 flex w-[90%] items-start justify-start gap-8 pl-12">
+        <Logo size="medium" />
+        <MainText />
+      </View>
+      <Text className="mb-20 mt-12 w-[90%] pl-12 text-left">
+        Snap your favourite moments in time and won them forever as NFTs on the
+        blockchain
+      </Text>
+
       <ConnectButton />
+
       <Link
         href={{
-          pathname: "/home/page",
+          pathname: "/toGetStarted/page",
         }}
         style={styles.link}
       >
@@ -47,12 +49,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   link: {
-    // You can apply some styles to Link component itself
     textAlign: "center",
   },
   text: {
     fontSize: 14,
     color: "black",
     textAlign: "center",
+    fontWeight: "bold",
   },
 });

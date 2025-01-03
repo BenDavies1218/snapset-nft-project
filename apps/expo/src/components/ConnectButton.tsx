@@ -9,7 +9,7 @@ export default function ConnectButton() {
       <Pressable
         onPressIn={() => setPressed(true)}
         onPressOut={() => setPressed(false)}
-        className={`flex w-[80%] items-center justify-center rounded-3xl border-2 border-black bg-[#db1f1f] p-4 shadow-md ${pressed ? "border-black" : "border-b-4 border-l-4"}`}
+        className={`flex w-[80%] items-center justify-center rounded-3xl border-2 border-black bg-[##db1f1f] p-4 shadow-md ${pressed ? "mb-[2px] border-black" : "border-b-4 border-l-4"}`}
       >
         <Text className="text-[16px] font-bold text-white">Connect Wallet</Text>
       </Pressable>
