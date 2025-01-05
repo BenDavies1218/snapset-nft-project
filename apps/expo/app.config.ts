@@ -7,10 +7,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   scheme: "expo",
   version: "0.1.0",
   orientation: "portrait",
-  icon: "./assets/icon.png",
   userInterfaceStyle: "automatic",
   splash: {
-    // image: "./assets/icon.png",
     resizeMode: "contain",
     backgroundColor: "#1F104A",
   },
@@ -25,7 +23,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   android: {
     package: "your.bundle.identifier",
     adaptiveIcon: {
-      // foregroundImage: "./assets/icon.png",
       backgroundColor: "#1F104A",
     },
   },

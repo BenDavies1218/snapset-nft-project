@@ -36,7 +36,7 @@ export default function Logo({
       className={`relative flex ${containerSize} items-center justify-center rounded-full border-2 border-black bg-[#db1f1f]`}
     >
       <Text
-        className={`absolute ${topOffset} z-[5] scale-y-[1.5] pt-2 text-center ${textSize} font-extrabold text-white`}
+        className={`absolute ${topOffset} z-[5] scale-y-[1.5] pt-2 text-center ${textSize} font-extrabold text-[#eeeade]`}
       >
         S
       </Text>
