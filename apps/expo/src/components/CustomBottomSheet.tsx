@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import type { ImageSourcePropType } from "react-native";
 import React, { useCallback } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetView,
@@ -15,13 +16,23 @@ import {
 } from "../../assets";
 
 // Define a single SupportedWallet component
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function SupportedWallet({ name, source }: { name: string; source: any }) {
+
+function SupportedWallet({
+  name,
+  source,
+  onPress,
+}: {
+  name: string;
+  source: ImageSourcePropType;
+  onPress: () => void;
+}) {
   return (
-    <View style={styles.walletContainer}>
-      <Image source={source} style={styles.walletImage} />
-      <Text style={styles.walletText}>{name}</Text>
-    </View>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.walletContainer}>
+        <Image source={source} style={styles.walletImage} />
+        <Text style={styles.walletText}>{name}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
@@ -40,6 +51,12 @@ export default function CustomBottomSheet({
       source: walletconnect,
     },
   ];
+
+  const handleClick = async () => {
+    const response = await fetch("http://localhost:3000/api/hello");
+    const data = await response.json();
+    console.log(data);
+  };
 
   const renderBackdrop = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -74,6 +91,7 @@ export default function CustomBottomSheet({
       }}
       handleComponent={() => (
         <View style={styles.handle}>
+          <View className="mt-4 h-[6px] w-12 rounded-full bg-[#7c7d7f] bg-white"></View>
           <Text style={styles.handleText}>Connect a Wallet</Text>
         </View>
       )}
@@ -82,6 +100,7 @@ export default function CustomBottomSheet({
         <BottomSheetView style={styles.walletList}>
           {wallets.map((wallet) => (
             <SupportedWallet
+              onPress={handleClick}
               key={wallet.name}
               name={wallet.name}
               source={wallet.image.source}
@@ -127,6 +146,7 @@ const styles = StyleSheet.create({
   },
   handle: {
     backgroundColor: "#282a2f",
+    gap: 10,
     width: "100%",
     height: 40,
     paddingTop: 10,
@@ -148,8 +168,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   walletList: {
-    paddingTop: 20,
-    paddingBottom: 40,
+    paddingTop: 30,
+    paddingBottom: 30,
     backgroundColor: "#282a2f",
     flexDirection: "row",
     justifyContent: "space-evenly",

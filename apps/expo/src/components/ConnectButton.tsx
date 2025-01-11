@@ -9,7 +9,7 @@ export default function ConnectButton({
   const [pressed, setPressed] = useState(false);
 
   return (
-    <View className="flex w-full items-center justify-center p-4">
+    <View className="mb-4 flex w-full items-center justify-center p-4">
       <Pressable
         onPress={handlePresentModalPress}
         onPressIn={() => setPressed(true)}
